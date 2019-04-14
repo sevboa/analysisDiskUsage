@@ -10,3 +10,5 @@ input/inputDocs/*
 !input/inputDocs/.gitkeep
 input/*.*
 !input/.gitkeep
+code_cache
+.bak

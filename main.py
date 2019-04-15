@@ -1,13 +1,13 @@
+
 from modules.CsvWorker import csvWorker
-from modules.models.DataKeeper import dataKeeper
-from modules.models.TimeUnit import timeUnit
+from modules.models.DataModel import dataModel
 
 data = csvWorker.load('input/Diskmon.LOG', ['number','time','delay','disk','type','sector','size'], delimeter='\t')
 
-DataKeeper = dataKeeper()
+Data = dataModel(timeInterval = 60)
 
 i = 0
-while i < 1000:
+while i < 40000 and i < len(data)-1:
 	i = i + 1
-	DataKeeper.addData(data[i])
-DataKeeper.getData()
+	Data.addRecord(data[i])
+Data.printRecords()

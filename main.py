@@ -1,12 +1,13 @@
 from modules.CsvWorker import csvWorker
+from modules.models.DataKeeper import dataKeeper
+from modules.models.TimeUnit import timeUnit
 
-data = csvWorker.load('input/Diskmon.LOG', ['number','time','delay','4','type','process_id','size'], delimeter='\t')
+data = csvWorker.load('input/Diskmon.LOG', ['number','time','delay','disk','type','sector','size'], delimeter='\t')
 
-result = dict()
+DataKeeper = dataKeeper()
 
 i = 0
-while i < 100:
-	print(data[i])
+while i < 1000:
 	i = i + 1
-	result = {
-	   'minute': int(float(data[i])/60),
+	DataKeeper.addData(data[i])
+DataKeeper.getData()
